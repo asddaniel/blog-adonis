@@ -1,4 +1,5 @@
  import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+ import {string} from '@ioc:Adonis/Core/Helpers'
 import session from '../../../config/session';
  import Article from '../../Models/Article';
 import UpdateArticleValidator from '../../Validators/UpdateArticleValidator';
@@ -28,7 +29,15 @@ export default class AppsController {
         return response.redirect('/article/'+params.id);
     }
     async create({request, response}: HttpContextContract) {
-        const post = new Article();
+       const file =    await request.file('image');
+       const post = new Article();  
+       if(file){
+        const nom = string.generateRandom(32)+'.'+file.extname;
+        await file.moveToDisk('./', {name: nom});
+        post.image = nom;
+       }
+          
+        
         post.merge(await request.validate(UpdateArticleValidator));
         await post.save();
         return response.redirect().toRoute('accueil');
