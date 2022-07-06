@@ -1,0 +1,101 @@
+@layout('blog.layout.header')
+
+@section('body')
+<body class="home page page-template page-template-template-portfolio page-template-template-portfolio-php">
+<div id="page">
+	<div class="container">
+		<header id="masthead" class="site-header">
+		<div class="site-branding">
+			<h1 class="site-title"><a href="index.html" rel="home">Daniel</a></h1>
+			<h2 class="site-description">Magazine Adonis</h2>
+		</div>
+		<nav id="site-navigation" class="main-navigation">
+		<button class="menu-toggle">Menu</button>
+		<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+		<div class="menu-menu-1-container">
+			<ul id="menu-menu-1" class="menu">
+				<li><a href="{{route('accueil')}}">Home</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a href="shop.html">Shop</a></li>
+				<li><a href="blog.html">Blog</a></li>
+				<li><a href="elements.html">Elements</a></li>
+				<li><a href="#">Pages</a>
+				<ul class="sub-menu">
+					<li><a href="portfolio-item.html">Portfolio Item</a></li>
+					<li><a href="blog-single.html">Blog Article</a></li>
+					<li><a href="shop-single.html">Shop Item</a></li>
+					<li><a href="portfolio-category.html">Portfolio Category</a></li>
+				</ul>
+				</li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+		</div>
+		</nav>
+		</header>
+		<!-- #masthead -->
+		<div id="content" class="site-content">
+			<div id="primary" class="content-area column full">
+				<main id="main" class="site-main">
+				<article id="post-39" class="post-39 page type-page status-publish hentry">
+				<header class="entry-header">
+				<h1 class="entry-title">Modification</h1>
+				</header>
+				<!-- .entry-header -->
+				<div class="entry-content">
+						
+				
+						
+					<div class="wpcmsdev-columns">
+						<div class="column column-width-one-half">
+							<h4>Quick Contact</h4>						
+							
+							<form class="wpcf7" method="post" action="{{route('update_article', {id: post.id}) }}" enctype="multipart/form-data" id="contactform">
+								<div class="form">
+									<p><input type="text" name="title" value="{{post.title}}" placeholder="Titre de l'article"></p>
+									<p><input type="file" name="image" ></p>
+									<p><textarea name="content" rows="3" placeholder="Contenu de l'article" >{{post.image}}</textarea></p>
+									<input type="submit" id="submit" class="clearfix btn" value="Enregistrer">
+								</div>
+							</form>
+							<div class="done">								
+								Your message has been sent. Thank you!
+							</div>
+							
+						</div>
+						<div class="column column-width-one-half">
+							<h4>Article {{ post.title }}</h4>
+							
+							<p>
+								{{ post.image }}
+							</p>
+						</div>
+					</div>
+				</div>
+				<!-- .entry-content -->
+				</article>
+				</main>
+				<!-- #main -->
+			</div>
+			<!-- #primary -->
+		</div>
+		<!-- #content -->
+	</div>
+	<!-- .container -->
+	<footer id="colophon" class="site-footer">
+	<div class="container">
+		<div class="site-info">
+			<h1 style="font-family: 'Herr Von Muellerhoff';color: #ccc;font-weight:300;text-align: center;margin-bottom:0;margin-top:0;line-height:1.4;font-size: 46px;">Adonis</h1>
+			<a target="blank" href="https://www.wowthemes.net/">Daniel Assani</a>
+		</div>
+	</div>
+	</footer>
+	<a href="#top" class="smoothup" title="Back to top"><span class="genericon genericon-collapse"></span></a>
+</div>
+<!-- #page -->
+<script src='js/jquery.js'></script>
+<script src='js/plugins.js'></script>
+<script src='js/scripts.js'></script>
+<script src='js/masonry.pkgd.min.js'></script>
+<script src='js/validate.js'></script>
+</body>
+@endsection

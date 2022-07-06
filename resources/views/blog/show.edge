@@ -1,0 +1,82 @@
+@layout('blog.layout.header')
+
+@section('body')
+<body class="home page page-template page-template-template-portfolio page-template-template-portfolio-php">
+<div id="page">
+	<div class="container">
+		<header id="masthead" class="site-header">
+		<div class="site-branding">
+			<h1 class="site-title"><a href="index.html" rel="home">Daniel Assani</a></h1>
+			<h2 class="site-description">Magazine adonis</h2>
+		</div>
+		<nav id="site-navigation" class="main-navigation">
+		<button class="menu-toggle">Menu</button>
+		<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+		<div class="menu-menu-1-container">
+			<ul id="menu-menu-1" class="menu">
+				<li><a href="{{route('accueil')}}">Home</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a href="shop.html">Shop</a></li>
+				<li><a href="blog.html">Blog</a></li>
+				<li><a href="{{route('creation_article')}}">ajouter</a></li>
+				<li><a href="#">Pages</a>
+				<ul class="sub-menu">
+					<li><a href="portfolio-item.html">Portfolio Item</a></li>
+					<li><a href="blog-single.html">Blog Article</a></li>
+					<li><a href="shop-single.html">Shop Item</a></li>
+					<li><a href="portfolio-category.html">Portfolio Category</a></li>
+				</ul>
+				</li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+		</div>
+		</nav>
+		</header>
+		<!-- #masthead -->
+		<div id="content" class="site-content">
+			<div id="primary" class="content-area column full">
+				<main id="main" class="site-main">
+				
+				<article class="hentry">
+				<header class="entry-header">
+				<h1 class="entry-title">{{post.title}}</h1>	
+				<form method="POST" action="{{route('supprimer', {id: post.id})}}?_method=DELETE" class="btn ">
+					<button class="btn" type="submit">supprimer</button>
+				</form>	
+				<a class="next page-numbers" href="{{route('modifier', {id: post.id})}}">modifier</a>
+				</header>
+				<!-- .entry-header -->
+
+				<div class="entry-content">
+				<p><img style="border:10px solid #f4f5f6" src="http://localhost:3333/images/{{post.content}}" alt="bg5" width="430" class="alignright"></p>
+				<p>{{post.image}} gg</p>
+				<p>{{post.image}}</p>
+				<h2 style="font-family: 'Herr Von Muellerhoff';color:#ccc;font-weight:300;">Daniel Assani</h2>
+				</div><!-- .entry-content -->
+				</article>
+				
+				</main>
+				<!-- #main -->
+			</div>
+			<!-- #primary -->
+		</div>
+		<!-- #content -->
+	</div>
+	<!-- .container -->
+	<footer id="colophon" class="site-footer">
+	<div class="container">
+		<div class="site-info">
+			<h1 style="font-family: 'Herr Von Muellerhoff';color: #ccc;font-weight:300;text-align: center;margin-bottom:0;margin-top:0;line-height:1.4;font-size: 46px;">Moschino</h1>
+			 <a target="blank" href="https://www.wowthemes.net/">&copy; Moschino - Free HTML Template by WowThemes.net</a>
+		</div>
+	</div>	
+	</footer>
+	<a href="#top" class="smoothup" title="Back to top"><span class="genericon genericon-collapse"></span></a>
+</div>
+<!-- #page -->
+<script src='http://localhost/3333/js/jquery.js'></script>
+<script src='http://localhost/3333/js/plugins.js'></script>
+<script src='http://localhost/3333/js/scripts.js'></script>
+<script src='http://localhost/3333/js/masonry.pkgd.min.js'></script>
+</body>
+@endsection
