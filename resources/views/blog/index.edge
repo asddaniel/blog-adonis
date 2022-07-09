@@ -58,9 +58,19 @@
 				<!-- .grid -->
 				
 				<nav class="pagination">
-				<span class="page-numbers current">1</span>
-				<a class="page-numbers" href="#">2</a>
-				<a class="next page-numbers" href="#">Next »</a>
+					@each(curseur in posts.getUrlsForRange(1, posts.lastPage))
+
+					@if(curseur.page == current_page)
+					<a class="page-numbers current" href="{{curseur.url}}">{{curseur.page }}</a>
+					@else
+					<a class="page-numbers" href="{{curseur.url}}">{{curseur.page }}  </a>
+				  @endif
+				@endeach
+				@if(posts.getUrlsForRange(1, posts.lastPage).length>parseInt(current_page))
+				<a class="next page-numbers" href="/?page={{parseInt(current_page)+1}}">suivant »</a>
+				@else
+				<a class="next page-numbers" href="/?page={{parseInt(current_page)-1}}">« Précedent</a>
+				@endif
 				</nav>
 				<br/>
 				

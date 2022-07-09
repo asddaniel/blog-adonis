@@ -20,9 +20,7 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async ({ view }) => {
-  return view.render('welcome')
-})
+Route.get('/', 'AppsController.index');
 Route.get('/accueil', 'AppsController.index').as('accueil');
 Route.get('/article/:id', 'AppsController.show').as('vue_article');
 Route.post('/article/:id', 'AppsController.update').as('update_article');

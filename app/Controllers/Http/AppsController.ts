@@ -3,12 +3,16 @@
 import session from '../../../config/session';
  import Article from '../../Models/Article';
 import UpdateArticleValidator from '../../Validators/UpdateArticleValidator';
+import Database from '@ioc:Adonis/Lucid/Database';
 export default class AppsController {
 
-    async index ({view}: HttpContextContract) {
-        let posts = await Article.all();
-        
-        return view.render('blog.index', {posts});
+    async index ({view, request}: HttpContextContract) {
+         const page =request.input("page", 1);
+        let posts = await Database.from(Article.table).paginate(page, 3);
+       // let posts = await Article.all();
+        let current_page = request.input("page", 1)
+        //return current_page
+        return view.render('blog.index', {posts, current_page});
     }
     async show ({params, view}: HttpContextContract) {
         let post = await Article.findOrFail(params.id);
